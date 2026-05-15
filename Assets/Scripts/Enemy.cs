@@ -1,34 +1,66 @@
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem;
 
 public class Enemy : MonoBehaviour
 {
     private NavMeshAgent agent;
 
-    [SerializeField] private Transform target; // 🎯 цель
+    [SerializeField] private Transform target;
+    [SerializeField] private PlayerMove player;
+    [SerializeField] private JoystickTouchZone joystick;
 
-    [SerializeField] float stopDistance = 1.2f;
+    private Vector3 lastKnownPosition;
 
-    private void Start()
+    void Start()
     {
         agent = GetComponent<NavMeshAgent>();
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        agent.stoppingDistance = stopDistance;
     }
 
-    private void Update()
+    void Update()
     {
-        if (target == null) return;
+        Debug.Log("input " + joystick.input);
+        
 
-        agent.SetDestination(target.position);
+        if (joystick == null || player == null || target == null)
+            return;
 
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        // 🟢 1. ИГРОК ДВИГАЕТСЯ
+        if (joystick.IsMoving)
+        {
+            agent.isStopped = false;
+            agent.SetDestination(target.position);
+
+            lastKnownPosition = target.position;
+            return;
+        }else if (joystick.IsReleased)
+        {
+            agent.isStopped = false;
+            agent.SetDestination(lastKnownPosition);
+        }
+        else
         {
             agent.ResetPath();
+            agent.isStopped = true;
+            return;
         }
-    }
+        
 
+        // 🔴 2. ДЖОЙСТИК В DEADZONE → СТОП
+        /*if (joystick.input == Vector2.zero && joystick.IsReleased)
+        {
+            agent.ResetPath();
+            agent.isStopped = true;
+            return;
+        }
+
+        // 🟡 3. ОТПУСТИЛ, НО БЫЛ ДВИЖ → ИДЁМ В ПОСЛЕДНЮЮ ТОЧКУ
+        if (joystick.IsReleased)
+        {
+            agent.isStopped = false;
+            agent.SetDestination(lastKnownPosition);
+        }*/
+    }
 }

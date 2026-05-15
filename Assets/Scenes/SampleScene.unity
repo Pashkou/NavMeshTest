@@ -367,7 +367,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   target: {fileID: 1654844982}
-  stopDistance: 1.2
+  player: {fileID: 1654844983}
+  joystick: {fileID: 1075222763}
 --- !u!195 &220230808
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1012,7 +1013,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   target: {fileID: 1654844982}
-  stopDistance: 1.2
+  player: {fileID: 1654844983}
+  joystick: {fileID: 1075222763}
 --- !u!195 &637348092
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1221,7 +1223,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   target: {fileID: 1654844982}
-  stopDistance: 1.2
+  player: {fileID: 1654844983}
+  joystick: {fileID: 1075222763}
 --- !u!195 &855601453
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1350,7 +1353,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   target: {fileID: 1654844982}
-  stopDistance: 1.2
+  player: {fileID: 1654844983}
+  joystick: {fileID: 1075222763}
 --- !u!195 &855963617
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1941,7 +1945,7 @@ GameObject:
   - component: {fileID: 1075222761}
   - component: {fileID: 1075222763}
   m_Layer: 5
-  m_Name: Image
+  m_Name: JoystickArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2018,8 +2022,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   input: {x: 0, y: 0}
   joystickBase: {fileID: 1075222760}
-  radius: 3
-  deadZone: 0
+  radius: 40
+  deadZone: 0.5
+  lastInput: {x: 0, y: 0}
 --- !u!1 &1256607424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,7 +2057,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   target: {fileID: 1654844982}
-  stopDistance: 1.2
+  player: {fileID: 1654844983}
+  joystick: {fileID: 1075222763}
 --- !u!195 &1256607426
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2293,8 +2299,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   touchZone: {fileID: 1075222763}
   centerObject: {fileID: 1065081915}
-  radius: 2
+  radius: 4
   speed: 30
+  lastMoveDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1728331105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,7 +2609,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   target: {fileID: 1654844982}
-  stopDistance: 1.2
+  player: {fileID: 1654844983}
+  joystick: {fileID: 1075222763}
 --- !u!195 &2047445845
 NavMeshAgent:
   m_ObjectHideFlags: 0

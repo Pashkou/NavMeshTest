@@ -8,26 +8,24 @@ public class JoystickTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandle
     [Header("Joystick settings")]
     public RectTransform joystickBase;
 
-    [Range(3f, 200f)]
-    public float radius = 100f;
+    public float deadZone = 10f;
 
-    [Range(0f, 0.3f)]
-    public float deadZone = 0.1f;
+    public bool IsMoving => input != Vector2.zero;
+    public bool IsReleased = false;
 
+    public Vector2 lastInput;
     private Vector2 startPos;
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // фиксируем центр джойстика
+        input = Vector2.zero;
+
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             joystickBase,
             eventData.position,
             eventData.pressEventCamera,
             out startPos
         );
-
-        input = Vector2.zero;
-        UpdateInput(eventData);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -37,7 +35,32 @@ public class JoystickTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandle
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        Vector2 currentPos;
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            joystickBase,
+            eventData.position,
+            eventData.pressEventCamera,
+            out currentPos
+        );
+
+        Vector2 delta = currentPos - startPos;
+
+        float distance = delta.magnitude;
+
+        if (distance < deadZone)
+        {
+            Debug.Log("DEAD");
+            input = Vector2.zero;
+            IsReleased = false;
+            return;
+        }
+
+        Debug.Log("NOT DEAD");
         input = Vector2.zero;
+        IsReleased = true;
+        lastInput = input;
+
     }
 
     void UpdateInput(PointerEventData eventData)
@@ -55,18 +78,16 @@ public class JoystickTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandle
 
         float distance = delta.magnitude;
 
-        // 🔥 deadzone (PUBG style)
-        if (distance < radius * deadZone)
+        if (distance < deadZone)
         {
+            Debug.Log("DEAD");
             input = Vector2.zero;
             return;
         }
 
-        // normalize
-        Vector2 direction = delta.normalized;
+        Debug.Log("NOT DEAD");
+        input = delta.normalized;
 
-        float strength = Mathf.Clamp01(distance / radius);
-
-        input = direction * strength;
+        lastInput = input;
     }
 }

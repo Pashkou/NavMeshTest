@@ -4,8 +4,11 @@ public class PlayerMove : MonoBehaviour
 {
     public JoystickTouchZone touchZone;
     public Transform centerObject;
+
     public float radius = 2f;
     public float speed = 5f;
+
+    public Vector3 lastMoveDirection;
 
     void Update()
     {
@@ -15,6 +18,8 @@ public class PlayerMove : MonoBehaviour
             return;
 
         Vector3 dir = new Vector3(input.x, input.y, 0).normalized;
+
+        lastMoveDirection = dir;
 
         Vector3 targetPos = centerObject.position + dir * radius;
 

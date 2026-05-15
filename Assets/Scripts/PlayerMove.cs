@@ -10,8 +10,14 @@ public class PlayerMove : MonoBehaviour
 
     public Vector3 lastMoveDirection;
 
+    public UnitManager manager;
+
     void Update()
     {
+        if (!manager.activatedTag.Equals(tag)) {
+            return;
+        }
+
         Vector2 input = touchZone.input;
 
         if (input.sqrMagnitude < 0.001f)

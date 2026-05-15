@@ -17,9 +17,9 @@ public class JoystickTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandle
     public bool IsFar = false;
 
 
-    public GameObject targetNear;
+    /*public GameObject targetNear;
     public GameObject targetMiddle;
-    public GameObject targetFar;
+    public GameObject targetFar;*/
 
 
     private Vector2 startPos;
@@ -107,7 +107,7 @@ public class JoystickTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandle
     }
 
     private void setColors(float distance) {
-        if (distance < nearZone)
+        /*if (distance < nearZone)
         {
             targetNear.GetComponent<SpriteRenderer>().color = Color.blue;
             targetMiddle.GetComponent<SpriteRenderer>().color = Color.blue;
@@ -124,6 +124,6 @@ public class JoystickTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandle
             targetNear.GetComponent<SpriteRenderer>().color = Color.blue;
             targetMiddle.GetComponent<SpriteRenderer>().color = Color.blue;
             targetFar.GetComponent<SpriteRenderer>().color = Color.red;
-        }
+        }*/
     }
 }

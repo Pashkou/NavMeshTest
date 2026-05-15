@@ -3,13 +3,16 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public int id;
     private NavMeshAgent agent;
 
-    
     [SerializeField] private Transform targetNear;
     [SerializeField] private Transform targetMiddle;
     [SerializeField] private Transform targetFar;
+
     [SerializeField] private JoystickTouchZone joystick;
+
+    public UnitManager manager;
 
     private Vector3 lastKnownMiddlePosition;
     private Vector3 lastKnownFarPosition;
@@ -24,6 +27,11 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (!manager.IsActivatedByIdAndTag(id, tag)) {
+            return;
+        }
+
+
         if (joystick.IsNear)
         {
             agent.isStopped = false;

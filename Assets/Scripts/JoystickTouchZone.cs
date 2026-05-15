@@ -10,16 +10,14 @@ public class JoystickTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandle
 
     public float deadZone = 10f;
 
-    public bool IsMoving => input != Vector2.zero;
+    public bool IsMoving = false;
     public bool IsReleased = false;
 
-    public Vector2 lastInput;
     private Vector2 startPos;
 
     public void OnPointerDown(PointerEventData eventData)
     {
         input = Vector2.zero;
-
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             joystickBase,
             eventData.position,
@@ -47,20 +45,17 @@ public class JoystickTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandle
         Vector2 delta = currentPos - startPos;
 
         float distance = delta.magnitude;
+        IsMoving = false;
 
         if (distance < deadZone)
         {
-            Debug.Log("DEAD");
             input = Vector2.zero;
             IsReleased = false;
             return;
         }
-
-        Debug.Log("NOT DEAD");
         input = Vector2.zero;
         IsReleased = true;
-        lastInput = input;
-
+        IsMoving = false;
     }
 
     void UpdateInput(PointerEventData eventData)
@@ -80,14 +75,11 @@ public class JoystickTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandle
 
         if (distance < deadZone)
         {
-            Debug.Log("DEAD");
             input = Vector2.zero;
+            IsMoving = false;
             return;
         }
-
-        Debug.Log("NOT DEAD");
         input = delta.normalized;
-
-        lastInput = input;
+        IsMoving = true;
     }
 }

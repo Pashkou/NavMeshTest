@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 220230808}
   - component: {fileID: 220230807}
   m_Layer: 0
-  m_Name: Enemy (3)
+  m_Name: Enemy4
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -366,8 +366,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f82b4445504ea43877055017c75bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  targetFar: {fileID: 1654844982}
   targetNear: {fileID: 807014143}
+  targetMiddle: {fileID: 1654844982}
+  targetFar: {fileID: 852092505}
   joystick: {fileID: 1075222763}
 --- !u!195 &220230808
 NavMeshAgent:
@@ -994,7 +995,7 @@ GameObject:
   - component: {fileID: 637348092}
   - component: {fileID: 637348091}
   m_Layer: 0
-  m_Name: Enemy (1)
+  m_Name: Enemy2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1012,8 +1013,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f82b4445504ea43877055017c75bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  targetFar: {fileID: 1654844982}
   targetNear: {fileID: 807014143}
+  targetMiddle: {fileID: 1654844982}
+  targetFar: {fileID: 852092505}
   joystick: {fileID: 1075222763}
 --- !u!195 &637348092
 NavMeshAgent:
@@ -1203,7 +1205,7 @@ GameObject:
   - component: {fileID: 807014142}
   - component: {fileID: 807014141}
   m_Layer: 0
-  m_Name: PlayerNear
+  m_Name: TargetNear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1300,6 +1302,115 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &852092502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 852092505}
+  - component: {fileID: 852092504}
+  - component: {fileID: 852092503}
+  m_Layer: 0
+  m_Name: TargetFar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &852092503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852092502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a409e219adc8ac42ac2967f9731091d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  touchZone: {fileID: 1075222763}
+  centerObject: {fileID: 1065081915}
+  radius: 7
+  speed: 30
+  lastMoveDirection: {x: 0, y: 0, z: 0}
+--- !u!212 &852092504
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852092502}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Color: {r: 0.22966968, g: 0.21444462, b: 0.745283, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
+--- !u!4 &852092505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852092502}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1100001, y: 1.29, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &855601451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,7 +1424,7 @@ GameObject:
   - component: {fileID: 855601453}
   - component: {fileID: 855601452}
   m_Layer: 0
-  m_Name: Enemy (5)
+  m_Name: Enemy6
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1331,8 +1442,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f82b4445504ea43877055017c75bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  targetFar: {fileID: 1654844982}
   targetNear: {fileID: 807014143}
+  targetMiddle: {fileID: 1654844982}
+  targetFar: {fileID: 852092505}
   joystick: {fileID: 1075222763}
 --- !u!195 &855601453
 NavMeshAgent:
@@ -1443,7 +1555,7 @@ GameObject:
   - component: {fileID: 855963617}
   - component: {fileID: 855963616}
   m_Layer: 0
-  m_Name: Enemy (4)
+  m_Name: Enemy5
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1461,8 +1573,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f82b4445504ea43877055017c75bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  targetFar: {fileID: 1654844982}
   targetNear: {fileID: 807014143}
+  targetMiddle: {fileID: 1654844982}
+  targetFar: {fileID: 852092505}
   joystick: {fileID: 1075222763}
 --- !u!195 &855963617
 NavMeshAgent:
@@ -1961,7 +2074,7 @@ GameObject:
   - component: {fileID: 1065081915}
   - component: {fileID: 1065081914}
   m_Layer: 0
-  m_Name: CenterMarker
+  m_Name: GroupCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2131,9 +2244,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   input: {x: 0, y: 0}
   joystickBase: {fileID: 1075222760}
-  deadZone: 0.5
-  IsMoving: 0
-  IsReleased: 0
+  nearZone: 0.4
+  middleZone: 1
+  IsNear: 0
+  IsMiddle: 0
+  IsFar: 0
+  targetNear: {fileID: 807014140}
+  targetMiddle: {fileID: 1654844980}
+  targetFar: {fileID: 852092502}
 --- !u!1 &1256607424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,7 +2265,7 @@ GameObject:
   - component: {fileID: 1256607426}
   - component: {fileID: 1256607425}
   m_Layer: 0
-  m_Name: Enemy (2)
+  m_Name: Enemy3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2165,8 +2283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f82b4445504ea43877055017c75bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  targetFar: {fileID: 1654844982}
   targetNear: {fileID: 807014143}
+  targetMiddle: {fileID: 1654844982}
+  targetFar: {fileID: 852092505}
   joystick: {fileID: 1075222763}
 --- !u!195 &1256607426
 NavMeshAgent:
@@ -2314,7 +2433,7 @@ GameObject:
   - component: {fileID: 1654844981}
   - component: {fileID: 1654844983}
   m_Layer: 0
-  m_Name: PlayerFar
+  m_Name: TargetMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2625,7 +2744,7 @@ GameObject:
   - component: {fileID: 2047445845}
   - component: {fileID: 2047445844}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2717,8 +2836,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f82b4445504ea43877055017c75bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  targetFar: {fileID: 1654844982}
   targetNear: {fileID: 807014143}
+  targetMiddle: {fileID: 1654844982}
+  targetFar: {fileID: 852092505}
   joystick: {fileID: 1075222763}
 --- !u!195 &2047445845
 NavMeshAgent:
@@ -2758,6 +2878,7 @@ SceneRoots:
   - {fileID: 637348094}
   - {fileID: 1256607428}
   - {fileID: 1654844982}
+  - {fileID: 852092505}
   - {fileID: 807014143}
   - {fileID: 892151255}
   - {fileID: 1065081915}

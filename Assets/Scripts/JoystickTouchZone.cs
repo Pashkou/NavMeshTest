@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,10 +9,18 @@ public class JoystickTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandle
     [Header("Joystick settings")]
     public RectTransform joystickBase;
 
-    public float deadZone = 10f;
+    public float nearZone = 0.4f;
+    public float middleZone = 1f;
 
-    public bool IsMoving = false;
-    public bool IsReleased = false;
+    public bool IsNear = false;
+    public bool IsMiddle = false;
+    public bool IsFar = false;
+
+
+    public GameObject targetNear;
+    public GameObject targetMiddle;
+    public GameObject targetFar;
+
 
     private Vector2 startPos;
 
@@ -43,19 +52,29 @@ public class JoystickTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandle
         );
 
         Vector2 delta = currentPos - startPos;
-
         float distance = delta.magnitude;
-        IsMoving = false;
 
-        if (distance < deadZone)
+        setColors(distance);
+        input = Vector2.zero;
+        if (distance < nearZone)
         {
-            input = Vector2.zero;
-            IsReleased = false;
+            IsNear = false;
+            IsMiddle = false;
+            IsFar = false;
             return;
         }
-        input = Vector2.zero;
-        IsReleased = true;
-        IsMoving = false;
+        else if (distance < middleZone)
+        {
+            IsNear = false;
+            IsMiddle = true;
+            IsFar = true;
+        }
+        else {
+            IsNear = false;
+            IsMiddle = false;
+            IsFar = true;
+        }
+       
     }
 
     void UpdateInput(PointerEventData eventData)
@@ -73,13 +92,38 @@ public class JoystickTouchZone : MonoBehaviour, IPointerDownHandler, IDragHandle
 
         float distance = delta.magnitude;
 
-        if (distance < deadZone)
+        setColors(distance);
+
+        if (distance < nearZone)
         {
             input = Vector2.zero;
-            IsMoving = false;
+            IsNear = false;
+            IsMiddle = false;
+            IsFar = false;
             return;
         }
         input = delta.normalized;
-        IsMoving = true;
+        IsNear = true;
+    }
+
+    private void setColors(float distance) {
+        if (distance < nearZone)
+        {
+            targetNear.GetComponent<SpriteRenderer>().color = Color.blue;
+            targetMiddle.GetComponent<SpriteRenderer>().color = Color.blue;
+            targetFar.GetComponent<SpriteRenderer>().color = Color.blue;
+        }
+        else if (distance < middleZone)
+        {
+            targetNear.GetComponent<SpriteRenderer>().color = Color.blue;
+            targetMiddle.GetComponent<SpriteRenderer>().color = Color.red;
+            targetFar.GetComponent<SpriteRenderer>().color = Color.blue;
+        }
+        else
+        {
+            targetNear.GetComponent<SpriteRenderer>().color = Color.blue;
+            targetMiddle.GetComponent<SpriteRenderer>().color = Color.blue;
+            targetFar.GetComponent<SpriteRenderer>().color = Color.red;
+        }
     }
 }

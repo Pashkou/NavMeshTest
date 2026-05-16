@@ -5,11 +5,12 @@ public class GroupCenter : MonoBehaviour
 {
     [SerializeField] Transform[] enemies;
 
-    [SerializeField] Transform centerMarker;
+    [Header("CenterMarker Reference")]
+    public GameObject centerMarker;
 
     void Update()
     {
-        centerMarker.position = GetCenterPoint();
+        centerMarker.transform.position = GetCenterPoint();
     }
 
     Vector3 GetCenterPoint()

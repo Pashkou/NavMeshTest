@@ -6,8 +6,8 @@ public class UnitManager : MonoBehaviour
 {
 
     [Header("List of all enemies")]
-    public List<Enemy> enemies = new List<Enemy>();
-    private Dictionary<Enemy, bool> enemyStates = new Dictionary<Enemy, bool>();
+    public List<UnitControl> units = new List<UnitControl>();
+    private Dictionary<UnitControl, bool> enemyStates = new Dictionary<UnitControl, bool>();
     public string activatedTag;
 
     private void Awake()
@@ -17,7 +17,7 @@ public class UnitManager : MonoBehaviour
 
     public void ActivateByTag(string tagName)
     {
-        foreach (Enemy enemy in enemies)
+        foreach (UnitControl enemy in units)
         {
             if (enemy != null && enemy.CompareTag(tagName))
             {
@@ -28,7 +28,7 @@ public class UnitManager : MonoBehaviour
 
     public void DeactivateAll()
     {
-        foreach (Enemy enemy in enemies)
+        foreach (UnitControl enemy in units)
         {
             if (enemy != null)
             {
@@ -36,10 +36,8 @@ public class UnitManager : MonoBehaviour
             }
         }
     }
-    /// <summary>
-    /// Set activation state for a specific enemy.
-    /// </summary>
-    public void SetActivated(Enemy enemy, bool activated)
+
+    public void SetActivated(UnitControl enemy, bool activated)
     {
         if (enemy == null)
             return;
@@ -52,16 +50,13 @@ public class UnitManager : MonoBehaviour
         {
             enemyStates.Add(enemy, activated);
         }
-
-        // Optionally activate/deactivate the GameObject in the scene
-        //enemy.gameObject.SetActive(activated);
     }
 
     private void InitializeDictionary()
     {
         enemyStates.Clear();
 
-        foreach (Enemy enemy in enemies)
+        foreach (UnitControl enemy in units)
         {
             if (enemy != null && !enemyStates.ContainsKey(enemy))
             {
@@ -70,18 +65,7 @@ public class UnitManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public bool IsActivated(Enemy enemy)
+    public bool IsActivated(UnitControl enemy)
     {
         if (enemy != null && enemyStates.TryGetValue(enemy, out bool state))
         {
@@ -93,7 +77,7 @@ public class UnitManager : MonoBehaviour
 
     public bool IsActivatedByIdAndTag(int id, string tag)
     {
-        foreach (Enemy enemy in enemies)
+        foreach (UnitControl enemy in units)
         {
             if (enemy != null &&
                 enemy.id == id &&
@@ -108,7 +92,7 @@ public class UnitManager : MonoBehaviour
 
     public bool SetActivatedByIdAndTag(int id, string tag, bool activated)
     {
-        foreach (Enemy enemy in enemies)
+        foreach (UnitControl enemy in units)
         {
             if (enemy != null &&
                 enemy.id == id &&
@@ -118,9 +102,25 @@ public class UnitManager : MonoBehaviour
                 return true;
             }
         }
-
-        Debug.LogWarning($"No enemy found with ID {id} and tag '{tag}'");
         return false;
+    }
+
+    public List<UnitControl> GetActivatedUnits()
+    {
+        List<UnitControl> activatedEnemies = new List<UnitControl>();
+
+        foreach (var pair in enemyStates)
+        {
+            UnitControl enemy = pair.Key;
+            bool isActive = pair.Value;
+
+            if (enemy != null && isActive)
+            {
+                activatedEnemies.Add(enemy);
+            }
+        }
+
+        return activatedEnemies;
     }
 
     public void selectZilots() {

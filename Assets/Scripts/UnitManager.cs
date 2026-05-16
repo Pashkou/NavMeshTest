@@ -106,6 +106,22 @@ public class UnitManager : MonoBehaviour
         return false;
     }
 
+    public bool SetActivatedByIdAndTag(int id, string tag, bool activated)
+    {
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy != null &&
+                enemy.id == id &&
+                enemy.CompareTag(tag))
+            {
+                SetActivated(enemy, activated);
+                return true;
+            }
+        }
+
+        Debug.LogWarning($"No enemy found with ID {id} and tag '{tag}'");
+        return false;
+    }
 
     public void selectZilots() {
         activatedTag = "Zilot";
@@ -121,7 +137,11 @@ public class UnitManager : MonoBehaviour
     public void selectTanks() { }
     public void selectMutalisk() { }
 
-    public void selectNumber1() { }
+    public void selectNumber1() {
+        DeactivateAll();
+        SetActivatedByIdAndTag(1, "Zilot", true);
+
+    }
     public void selectNumber2() { }
     public void selectNumber3() { }
     public void selectNumber4() { }

@@ -8,12 +8,11 @@ public class TargetMove : MonoBehaviour
     public float radius = 2f;
     public float speed = 5f;
 
-    public UnitManager manager;
-
     void Update()
     {
-        if (!manager.activatedTag.Equals(tag)) {
-            return;
+        if (touchZone == null)
+        {
+             return;
         }
 
         Vector2 input = touchZone.input;

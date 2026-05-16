@@ -244,7 +244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &120894652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,7 +261,6 @@ MonoBehaviour:
   centerObject: {fileID: 580595152}
   radius: 7
   speed: 30
-  manager: {fileID: 1623928742}
 --- !u!212 &120894653
 SpriteRenderer:
   serializedVersion: 2
@@ -368,11 +367,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   id: 2
-  targetNear: {fileID: 404205016}
-  targetMiddle: {fileID: 502799620}
-  targetFar: {fileID: 120894654}
   joystick: {fileID: 1075222763}
   manager: {fileID: 1623928742}
+  targetManager: {fileID: 1923848387}
 --- !u!195 &125612834
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -501,11 +498,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   id: 5
-  targetNear: {fileID: 404205016}
-  targetMiddle: {fileID: 502799620}
-  targetFar: {fileID: 120894654}
   joystick: {fileID: 1075222763}
   manager: {fileID: 1623928742}
+  targetManager: {fileID: 1923848387}
 --- !u!195 &184918484
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -634,11 +629,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   id: 4
-  targetNear: {fileID: 807014143}
-  targetMiddle: {fileID: 1654844982}
-  targetFar: {fileID: 852092505}
   joystick: {fileID: 1075222763}
   manager: {fileID: 1623928742}
+  targetManager: {fileID: 1923848387}
 --- !u!195 &220230808
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -954,6 +947,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1623928742}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
         m_MethodName: selectStalkers
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1923848387}
+        m_TargetAssemblyTypeName: TargetManager, Assembly-CSharp
+        m_MethodName: onStalkerGroupSelected
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1367,7 +1372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &404205014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1384,7 +1389,6 @@ MonoBehaviour:
   centerObject: {fileID: 580595152}
   radius: 1
   speed: 30
-  manager: {fileID: 1623928742}
 --- !u!212 &404205015
 SpriteRenderer:
   serializedVersion: 2
@@ -1584,7 +1588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &502799618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1601,7 +1605,6 @@ MonoBehaviour:
   centerObject: {fileID: 580595152}
   radius: 4
   speed: 30
-  manager: {fileID: 1623928742}
 --- !u!212 &502799619
 SpriteRenderer:
   serializedVersion: 2
@@ -1937,7 +1940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &580595151
 SpriteRenderer:
   serializedVersion: 2
@@ -2044,11 +2047,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   id: 1
-  targetNear: {fileID: 404205016}
-  targetMiddle: {fileID: 502799620}
-  targetFar: {fileID: 120894654}
   joystick: {fileID: 1075222763}
   manager: {fileID: 1623928742}
+  targetManager: {fileID: 1923848387}
 --- !u!195 &615544445
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2369,11 +2370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   id: 2
-  targetNear: {fileID: 807014143}
-  targetMiddle: {fileID: 1654844982}
-  targetFar: {fileID: 852092505}
   joystick: {fileID: 1075222763}
   manager: {fileID: 1623928742}
+  targetManager: {fileID: 1923848387}
 --- !u!195 &637348092
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2915,6 +2914,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1923848387}
+        m_TargetAssemblyTypeName: TargetManager, Assembly-CSharp
+        m_MethodName: onZilotGroupSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &798901251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2953,11 +2964,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798901248}
   m_CullTransparentMesh: 1
---- !u!4 &807014143 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2688955611981938924, guid: 86e7643149ef61d4b8b7aaff5f7c4d16, type: 3}
-  m_PrefabInstance: {fileID: 8197983178102181967}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &830097890
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,11 +3101,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830097890}
   m_CullTransparentMesh: 1
---- !u!4 &852092505 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4410650307365537487, guid: d71b16292c609424ca453b141fb94be0, type: 3}
-  m_PrefabInstance: {fileID: 2428047625457948065}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &855601451
 GameObject:
   m_ObjectHideFlags: 0
@@ -3132,11 +3133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   id: 6
-  targetNear: {fileID: 807014143}
-  targetMiddle: {fileID: 1654844982}
-  targetFar: {fileID: 852092505}
   joystick: {fileID: 1075222763}
   manager: {fileID: 1623928742}
+  targetManager: {fileID: 1923848387}
 --- !u!195 &855601453
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3265,11 +3264,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   id: 5
-  targetNear: {fileID: 807014143}
-  targetMiddle: {fileID: 1654844982}
-  targetFar: {fileID: 852092505}
   joystick: {fileID: 1075222763}
   manager: {fileID: 1623928742}
+  targetManager: {fileID: 1923848387}
 --- !u!195 &855963617
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3877,11 +3874,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   id: 3
-  targetNear: {fileID: 404205016}
-  targetMiddle: {fileID: 502799620}
-  targetFar: {fileID: 120894654}
   joystick: {fileID: 1075222763}
   manager: {fileID: 1623928742}
+  targetManager: {fileID: 1923848387}
 --- !u!195 &1061893202
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4248,11 +4243,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   id: 3
-  targetNear: {fileID: 807014143}
-  targetMiddle: {fileID: 1654844982}
-  targetFar: {fileID: 852092505}
   joystick: {fileID: 1075222763}
   manager: {fileID: 1623928742}
+  targetManager: {fileID: 1923848387}
 --- !u!195 &1256607426
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4381,11 +4374,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   id: 6
-  targetNear: {fileID: 404205016}
-  targetMiddle: {fileID: 502799620}
-  targetFar: {fileID: 120894654}
   joystick: {fileID: 1075222763}
   manager: {fileID: 1623928742}
+  targetManager: {fileID: 1923848387}
 --- !u!195 &1262104424
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4536,7 +4527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1354708673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4741,11 +4732,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   id: 4
-  targetNear: {fileID: 404205016}
-  targetMiddle: {fileID: 502799620}
-  targetFar: {fileID: 120894654}
   joystick: {fileID: 1075222763}
   manager: {fileID: 1623928742}
+  targetManager: {fileID: 1923848387}
 --- !u!195 &1371016482
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5163,6 +5152,12 @@ MonoBehaviour:
   - {fileID: 220230807}
   - {fileID: 855963616}
   - {fileID: 855601452}
+  - {fileID: 615544444}
+  - {fileID: 125612833}
+  - {fileID: 1061893201}
+  - {fileID: 1371016481}
+  - {fileID: 184918483}
+  - {fileID: 1262104423}
   activatedTag: 
 --- !u!1 &1642482820
 GameObject:
@@ -5434,11 +5429,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650137588}
   m_CullTransparentMesh: 1
---- !u!4 &1654844982 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2758797561037769065, guid: fa69123f57089ac449a52bf54a31e599, type: 3}
-  m_PrefabInstance: {fileID: 4545713555243139936}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1824688135
 GameObject:
   m_ObjectHideFlags: 0
@@ -5555,6 +5545,9 @@ MonoBehaviour:
   targetFar: {fileID: 6047841834539190136, guid: d71b16292c609424ca453b141fb94be0, type: 3}
   targetCenter: {fileID: 4279638750460462565, guid: 0ce901d741b55cc44be0584d7b7f723b, type: 3}
   touchZone: {fileID: 1075222763}
+  targetNearObject: {fileID: 0}
+  targetMiddleObject: {fileID: 0}
+  targetFarObject: {fileID: 0}
 --- !u!4 &1923848388
 Transform:
   m_ObjectHideFlags: 0
@@ -6191,11 +6184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   id: 1
-  targetNear: {fileID: 807014143}
-  targetMiddle: {fileID: 1654844982}
-  targetFar: {fileID: 852092505}
   joystick: {fileID: 1075222763}
   manager: {fileID: 1623928742}
+  targetManager: {fileID: 1923848387}
 --- !u!195 &2047445845
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6540,6 +6531,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TargetFarZilot
       objectReference: {fileID: 0}
+    - target: {fileID: 6047841834539190136, guid: d71b16292c609424ca453b141fb94be0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7334834279820798306, guid: d71b16292c609424ca453b141fb94be0, type: 3}
       propertyPath: manager
       value: 
@@ -6568,6 +6563,10 @@ PrefabInstance:
     - target: {fileID: 109609190967682239, guid: d5eab445c3d80bb438d076c5a4afc72c, type: 3}
       propertyPath: m_Name
       value: ZilotGroup
+      objectReference: {fileID: 0}
+    - target: {fileID: 109609190967682239, guid: d5eab445c3d80bb438d076c5a4afc72c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4040979166064812101, guid: d5eab445c3d80bb438d076c5a4afc72c, type: 3}
       propertyPath: centerMarker
@@ -6706,6 +6705,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TargetMiddleZilot
       objectReference: {fileID: 0}
+    - target: {fileID: 6885603145053661630, guid: fa69123f57089ac449a52bf54a31e599, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6762,6 +6765,10 @@ PrefabInstance:
     - target: {fileID: 4279638750460462565, guid: 0ce901d741b55cc44be0584d7b7f723b, type: 3}
       propertyPath: m_Name
       value: ZilorCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279638750460462565, guid: 0ce901d741b55cc44be0584d7b7f723b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6831,6 +6838,10 @@ PrefabInstance:
     - target: {fileID: 5265037369009985548, guid: 86e7643149ef61d4b8b7aaff5f7c4d16, type: 3}
       propertyPath: m_Name
       value: TargetNearZilot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265037369009985548, guid: 86e7643149ef61d4b8b7aaff5f7c4d16, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

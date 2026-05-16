@@ -6,13 +6,10 @@ public class UnitControl : MonoBehaviour
     public int id;
     private NavMeshAgent agent;
 
-    [SerializeField] private Transform targetNear;
-    [SerializeField] private Transform targetMiddle;
-    [SerializeField] private Transform targetFar;
-
     [SerializeField] private JoystickTouchZone joystick;
 
     public UnitManager manager;
+    public TargetManager targetManager;
 
     private Vector3 lastKnownMiddlePosition;
     private Vector3 lastKnownFarPosition;
@@ -31,13 +28,12 @@ public class UnitControl : MonoBehaviour
             return;
         }
 
-
         if (joystick.IsNear)
         {
             agent.isStopped = false;
-            agent.SetDestination(targetNear.position);
-            lastKnownMiddlePosition = targetMiddle.position;
-            lastKnownFarPosition = targetFar.position;
+            agent.SetDestination(targetManager.targetNearObject.transform.position);
+            lastKnownMiddlePosition = targetManager.targetMiddleObject.transform.position;
+            lastKnownFarPosition = targetManager.targetFarObject.transform.position;
             return;
         } else if (joystick.IsMiddle) {
             agent.isStopped = false;

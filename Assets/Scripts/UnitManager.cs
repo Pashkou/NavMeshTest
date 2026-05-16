@@ -10,6 +10,7 @@ public class UnitManager : MonoBehaviour
     private Dictionary<UnitControl, bool> enemyStates = new Dictionary<UnitControl, bool>();
     public string activatedTag;
 
+    private string lastSelectedTag;
     private void Awake()
     {
         InitializeDictionary();
@@ -125,12 +126,14 @@ public class UnitManager : MonoBehaviour
 
     public void selectZilots() {
         activatedTag = "Zilot";
+        lastSelectedTag = activatedTag;
         DeactivateAll();
         ActivateByTag("Zilot");
     }
 
     public void selectStalkers() {
         activatedTag = "Stalker";
+        lastSelectedTag = activatedTag;
         DeactivateAll();
         ActivateByTag("Stalker");
     }
@@ -139,12 +142,27 @@ public class UnitManager : MonoBehaviour
 
     public void selectNumber1() {
         DeactivateAll();
-        SetActivatedByIdAndTag(1, "Zilot", true);
+        SetActivatedByIdAndTag(1, lastSelectedTag, true);
 
     }
-    public void selectNumber2() { }
-    public void selectNumber3() { }
-    public void selectNumber4() { }
-    public void selectNumber5() { }
-    public void selectNumber6() { }
+    public void selectNumber2() {
+        DeactivateAll();
+        SetActivatedByIdAndTag(2, lastSelectedTag, true);
+    }
+    public void selectNumber3() {
+        DeactivateAll();
+        SetActivatedByIdAndTag(3, lastSelectedTag, true);
+    }
+    public void selectNumber4() {
+        DeactivateAll();
+        SetActivatedByIdAndTag(4, lastSelectedTag, true);
+    }
+    public void selectNumber5() {
+        DeactivateAll();
+        SetActivatedByIdAndTag(5, lastSelectedTag, true);
+    }
+    public void selectNumber6() {
+        DeactivateAll();
+        SetActivatedByIdAndTag(6, lastSelectedTag, true);
+    }
 }

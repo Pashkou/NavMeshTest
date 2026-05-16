@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,6 +14,7 @@ public class UnitControl : MonoBehaviour
 
     private Vector3 lastKnownMiddlePosition;
     private Vector3 lastKnownFarPosition;
+    public TextMeshPro label;
 
     void Start()
     {
@@ -20,6 +22,8 @@ public class UnitControl : MonoBehaviour
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        if(label != null)
+        label.text = id.ToString();
     }
 
     void Update()

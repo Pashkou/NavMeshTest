@@ -33,13 +33,7 @@ public class TargetManager : MonoBehaviour
         }
     }
 
-    public void onZilotGroupSelected() {
-        destroyAllTargets();
-        createAllTargets();
-    }
-
-    public void onStalkerGroupSelected()
-    {
+    public void onGroupSelected() {
         destroyAllTargets();
         createAllTargets();
     }
